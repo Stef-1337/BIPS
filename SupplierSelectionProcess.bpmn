@@ -1,0 +1,4720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1pgqgai" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.16.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0">
+  <bpmn:collaboration id="Collaboration_1rwiuqm">
+    <bpmn:participant id="Participant_1lv6edr" processRef="Process_1x8rzss" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1x8rzss" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_23l4pdk">{
+  "components": [
+    {
+      "text": "# Projektauswahl",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0f39b3c",
+        "columns": null
+      },
+      "id": "Field_1vglw2u"
+    },
+    {
+      "label": "Wählen Sie ein bestehendes Projekt aus dem Drop-Down Menü aus. Bestätigen Sie dieses mit der Auswahl des Feldes \"Ausgewähltes Projekt\". ",
+      "type": "select",
+      "layout": {
+        "row": "Row_1fn6h0g",
+        "columns": null
+      },
+      "id": "Field_133cn7f",
+      "key": "select_projektAuswahl",
+      "defaultValue": "&lt;none&gt;",
+      "searchable": false,
+      "valuesKey": "projekte",
+      "disabled": false,
+      "readonly": "=radio_projekt_decision = -1"
+    },
+    {
+      "height": 120,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1vgg7xu",
+        "columns": null
+      },
+      "id": "Field_1ozjbj0"
+    },
+    {
+      "text": "# Neues Projekt anlegen",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0znig5w",
+        "columns": null
+      },
+      "id": "Field_1m9qbji"
+    },
+    {
+      "text": "Sollten Sie ein neues Projekt erstellen wollen, wählen Sie das Feld **Neues Projekt** aus.\nIn dem nachfolgenden Schritt können Sie dieses dann in der Datenbank anlegen.\n",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_19kxegx",
+        "columns": null
+      },
+      "id": "Field_0dpnnmd"
+    },
+    {
+      "values": [
+        {
+          "label": "Ausgewähltes Projekt",
+          "value": "1"
+        },
+        {
+          "label": "Neues Projekt",
+          "value": "-1"
+        }
+      ],
+      "label": "Projekt:",
+      "type": "radio",
+      "layout": {
+        "row": "Row_1l0ukin",
+        "columns": 4
+      },
+      "id": "Field_1ejzzky",
+      "key": "radio_projekt_decision",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1tzybyr",
+        "columns": null
+      },
+      "id": "Field_0v46tm6"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0ysnkvw",
+        "columns": null
+      },
+      "id": "Field_0fn9lrq"
+    },
+    {
+      "action": "submit",
+      "label": "Fortfahren",
+      "type": "button",
+      "layout": {
+        "row": "Row_0ysnkvw",
+        "columns": 2
+      },
+      "id": "Field_1d5xmzv"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0ysnkvw",
+        "columns": null
+      },
+      "id": "Field_1ra1twv"
+    }
+  ],
+  "type": "default",
+  "id": "projekt_auswaehlen",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.16.0"
+  },
+  "schemaVersion": 11
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_22m3e8u">{
+  "components": [
+    {
+      "text": "# Projekterstellung",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0gtyuj9",
+        "columns": null
+      },
+      "id": "Field_0795e1f"
+    },
+    {
+      "label": "Projektname",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0fmqaiv",
+        "columns": null
+      },
+      "id": "Field_07lfj0h",
+      "key": "projektname_neuesprojekt",
+      "description": "*Wählen Sie einen Namen für das neue Projekt (max. 45 Zeichen)."
+    },
+    {
+      "label": "Projektbeschreibung",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1q3cc5q",
+        "columns": null
+      },
+      "id": "Field_1sytfmh",
+      "key": "projektbeschreibung_neuesprojekt",
+      "description": "*Geben Sie eine kurze Beschreibung des Projektes an (max. 100 Zeichen)."
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0cdvbt5",
+        "columns": null
+      },
+      "id": "Field_1hltq3u"
+    },
+    {
+      "action": "submit",
+      "label": "Neues Projekt erstellen",
+      "type": "button",
+      "layout": {
+        "row": "Row_10cl5jv",
+        "columns": null
+      },
+      "id": "Field_0ndrjxl"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1lhzui9",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.16.0"
+  },
+  "schemaVersion": 11
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_2ftgmkr">{
+  "components": [
+    {
+      "text": "# Auswahl Fragebogen",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0vdkjrl",
+        "columns": null
+      },
+      "id": "Field_0uda0ej"
+    },
+    {
+      "text": "Wählen Sie einen  **Fragebogen** für das **neue Projekt** aus dem **Drop-Down Menü** aus.\nKlicken Sie anschließend auf **Bestätigen**.\n*_Hinweis: Fragebogen muss ausgewählt sein, um bestätigen zu können._",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_17m810j",
+        "columns": null
+      },
+      "id": "Field_0zzjquz"
+    },
+    {
+      "label": "Fragebogen",
+      "type": "select",
+      "layout": {
+        "row": "Row_148uxfk",
+        "columns": null
+      },
+      "id": "Field_0s7allq",
+      "key": "fragebogen_selection",
+      "valuesKey": "frageboegen"
+    },
+    {
+      "action": "submit",
+      "label": "Bestätigen",
+      "type": "button",
+      "layout": {
+        "row": "Row_13c50qu",
+        "columns": null
+      },
+      "id": "Field_1bnp6c5",
+      "conditional": {
+        "hide": "=fragebogen_selection = null"
+      }
+    }
+  ],
+  "type": "default",
+  "id": "fragebogen_auswaehlen",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.16.0"
+  },
+  "schemaVersion": 11
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_3q9o0ng">{
+  "components": [
+    {
+      "text": "# K.O.-Kriterien",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_14732q8",
+        "columns": null
+      },
+      "id": "Field_1pgqy3f"
+    },
+    {
+      "text": "In diesem Abschnitt können Sie wahlweise **K.O.-Kriterien** für einzelne Frage-Antwort-Kombinationen bestimmen.\nDie Festlegung von K.O.Kriterien ist **optional**. Klicken Sie nach Ihrer Auswahl  auf **Fortfahren**.",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_14rn2ed",
+        "columns": null
+      },
+      "id": "Field_0g0imp4"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1nj0617",
+        "columns": null
+      },
+      "id": "Field_0yvmtmj"
+    },
+    {
+      "text": "# Flexibilität",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1gmkzo5",
+        "columns": null
+      },
+      "id": "Field_1tfvxtg"
+    },
+    {
+      "label": "=\"Frage 1: \" + datenZumFragebogen[1].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_1n2bvzm",
+        "columns": null
+      },
+      "id": "Field_1ux75l8",
+      "key": "taglist_k1_f1",
+      "valuesKey": "antworten_Frage_1",
+      "properties": {},
+      "readonly": "=false"
+    },
+    {
+      "label": "=\"Frage 2: \" + datenZumFragebogen[2].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_0ldzdgj",
+        "columns": null
+      },
+      "id": "Field_0tgo4nk",
+      "key": "taglist_k1_f2",
+      "valuesKey": "antworten_Frage_2"
+    },
+    {
+      "label": "=\"Frage 3: \" + datenZumFragebogen[3].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_1n0xrfb",
+        "columns": null
+      },
+      "id": "Field_0rd2r7c",
+      "key": "taglist_k1_f3",
+      "valuesKey": "antworten_Frage_3"
+    },
+    {
+      "label": "=\"Frage 4: \" + datenZumFragebogen[4].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_1r0j1r4",
+        "columns": null
+      },
+      "id": "Field_0mjdk50",
+      "key": "taglist_k1_f4",
+      "valuesKey": "antworten_Frage_4"
+    },
+    {
+      "label": "=\"Frage 5: \" + datenZumFragebogen[5].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_0fqss44",
+        "columns": null
+      },
+      "id": "Field_05xprxd",
+      "key": "taglist_k1_f5",
+      "valuesKey": "antworten_Frage_5"
+    },
+    {
+      "text": "# Zeit",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0upqq7m",
+        "columns": null
+      },
+      "id": "Field_1gf0yve"
+    },
+    {
+      "label": "=\"Frage 1: \" + datenZumFragebogen[6].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_13zd4cn",
+        "columns": null
+      },
+      "id": "Field_13mfypa",
+      "key": "taglist_k2_f1",
+      "valuesKey": "antworten_Frage_6"
+    },
+    {
+      "label": "=\"Frage 2: \" + datenZumFragebogen[7].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_00j27ni",
+        "columns": null
+      },
+      "id": "Field_1avety8",
+      "key": "taglist_k2_f2",
+      "valuesKey": "antworten_Frage_7"
+    },
+    {
+      "label": "=\"Frage 3: \" + datenZumFragebogen[8].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_09uuj8j",
+        "columns": null
+      },
+      "id": "Field_07z799p",
+      "key": "taglist_k2_f3",
+      "valuesKey": "antworten_Frage_8"
+    },
+    {
+      "label": "=\"Frage 4: \" + datenZumFragebogen[9].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_151iqth",
+        "columns": null
+      },
+      "id": "Field_0guesya",
+      "key": "taglist_k2_f4",
+      "valuesKey": "antworten_Frage_9"
+    },
+    {
+      "label": "=\"Frage 5: \" + datenZumFragebogen[10].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_0ycbcb2",
+        "columns": null
+      },
+      "id": "Field_1wu6rp3",
+      "key": "taglist_k2_f5",
+      "valuesKey": "antworten_Frage_10"
+    },
+    {
+      "text": "# Qualität",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1cb89kj",
+        "columns": null
+      },
+      "id": "Field_105n8ha"
+    },
+    {
+      "label": "=\"Frage 1: \" + datenZumFragebogen[11].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_17sf0q6",
+        "columns": null
+      },
+      "id": "Field_0wiehb4",
+      "key": "taglist_k3_f1",
+      "valuesKey": "antworten_Frage_11"
+    },
+    {
+      "label": "=\"Frage 2: \" + datenZumFragebogen[12].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_1af3nkq",
+        "columns": null
+      },
+      "id": "Field_1ydwsyi",
+      "key": "taglist_k3_f2",
+      "valuesKey": "antworten_Frage_12"
+    },
+    {
+      "label": "=\"Frage 3: \" + datenZumFragebogen[13].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_08tgoyq",
+        "columns": null
+      },
+      "id": "Field_035cjpo",
+      "key": "taglist_k3_f3",
+      "valuesKey": "antworten_Frage_13"
+    },
+    {
+      "label": "=\"Frage 4: \" + datenZumFragebogen[14].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_1dsm6b4",
+        "columns": null
+      },
+      "id": "Field_1rjugci",
+      "key": "taglist_k3_f4",
+      "valuesKey": "antworten_Frage_14"
+    },
+    {
+      "label": "=\"Frage 5: \" + datenZumFragebogen[15].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_1wo36kx",
+        "columns": null
+      },
+      "id": "Field_0iq5h3e",
+      "key": "taglist_k3_f5",
+      "valuesKey": "antworten_Frage_15"
+    },
+    {
+      "text": "# Informationsfähigkeit",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_10f0uud",
+        "columns": null
+      },
+      "id": "Field_0g5x49h"
+    },
+    {
+      "label": "=\"Frage 1: \" + datenZumFragebogen[16].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_1soc4ie",
+        "columns": null
+      },
+      "id": "Field_06iyk5a",
+      "key": "taglist_k4_f1",
+      "valuesKey": "antworten_Frage_16"
+    },
+    {
+      "label": "=\"Frage 2: \" + datenZumFragebogen[17].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_1i3i27k",
+        "columns": null
+      },
+      "id": "Field_150o8g8",
+      "key": "taglist_k4_f2",
+      "valuesKey": "antworten_Frage_17"
+    },
+    {
+      "label": "=\"Frage 3: \" + datenZumFragebogen[18].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_0xfez7s",
+        "columns": null
+      },
+      "id": "Field_1udot3n",
+      "key": "taglist_k4_f3",
+      "valuesKey": "antworten_Frage_18"
+    },
+    {
+      "label": "=\"Frage 4: \" + datenZumFragebogen[19].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_0eoigr8",
+        "columns": null
+      },
+      "id": "Field_04j8dzz",
+      "key": "taglist_k4_f4",
+      "valuesKey": "antworten_Frage_19"
+    },
+    {
+      "label": "=\"Frage 5: \" + datenZumFragebogen[20].fragetext",
+      "type": "taglist",
+      "layout": {
+        "row": "Row_0btbqe4",
+        "columns": null
+      },
+      "id": "Field_03536k1",
+      "key": "taglist_k4_f5",
+      "valuesKey": "antworten_Frage_20"
+    },
+    {
+      "action": "submit",
+      "label": "Fortfahren",
+      "type": "button",
+      "layout": {
+        "row": "Row_0xv6vug",
+        "columns": 2
+      },
+      "id": "Field_021zzhe"
+    }
+  ],
+  "type": "default",
+  "id": "form_K.O.-Kriterien",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.16.0"
+  },
+  "schemaVersion": 11
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_21tjbb3">{
+  "components": [
+    {
+      "text": "# Gewichtung der Kategorien",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0a96spd",
+        "columns": null
+      },
+      "id": "Field_060azvk"
+    },
+    {
+      "text": "Passen Sie in diesem Abschnitt die **prozentuale Gewichtung** der einzenen **Kategorien** an (in Summe 100%*).\nKlicken Sie anschließend auf **Bestätigen**. \n* *_Hinweis: Muss eingehalten werden, ansonsten keine Bestätigung möglich_.",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0v0uopg",
+        "columns": null
+      },
+      "id": "Field_1v1gboc"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_093e8cg",
+        "columns": null
+      },
+      "id": "Field_0wsu0ze"
+    },
+    {
+      "label": "Flexibilität",
+      "type": "number",
+      "layout": {
+        "row": "Row_093e8cg",
+        "columns": 4
+      },
+      "id": "Field_1pas8ku",
+      "key": "kategoriegewichtung_flexibilitaet",
+      "appearance": {
+        "suffixAdorner": "%"
+      },
+      "properties": {}
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_093e8cg",
+        "columns": null
+      },
+      "id": "Field_1t5zotb"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1k163c7",
+        "columns": null
+      },
+      "id": "Field_0lpzsrb"
+    },
+    {
+      "label": "Zeit",
+      "type": "number",
+      "layout": {
+        "row": "Row_1k163c7",
+        "columns": 4
+      },
+      "id": "Field_1s97lul",
+      "key": "kategoriegewichtung_zeit",
+      "appearance": {
+        "suffixAdorner": "%"
+      }
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1k163c7",
+        "columns": null
+      },
+      "id": "Field_1tn1ska"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0u1pvfs",
+        "columns": null
+      },
+      "id": "Field_1qgb5fw"
+    },
+    {
+      "label": "Qualität",
+      "type": "number",
+      "layout": {
+        "row": "Row_0u1pvfs",
+        "columns": 4
+      },
+      "id": "Field_1lckv15",
+      "key": "kategoriegewichtung_qualitaet",
+      "appearance": {
+        "suffixAdorner": "%"
+      }
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0u1pvfs",
+        "columns": null
+      },
+      "id": "Field_1g0qapk"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1a2813x",
+        "columns": null
+      },
+      "id": "Field_0g1o1hw"
+    },
+    {
+      "label": "Informationsfähigkeit",
+      "type": "number",
+      "layout": {
+        "row": "Row_1a2813x",
+        "columns": 4
+      },
+      "id": "Field_0351mbu",
+      "key": "kategoriegewichtung_informationsfaehigkeit",
+      "appearance": {
+        "suffixAdorner": "%"
+      }
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1a2813x",
+        "columns": null
+      },
+      "id": "Field_02i7m06"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_12y51el",
+        "columns": 6
+      },
+      "id": "Field_063ha4e"
+    },
+    {
+      "values": [
+        {
+          "label": "Σ Kategorien = 100%",
+          "value": "true"
+        }
+      ],
+      "label": "Bestätigen",
+      "type": "radio",
+      "layout": {
+        "row": "Row_12y51el",
+        "columns": 6
+      },
+      "id": "Field_19vjtvq",
+      "key": "radio_bestaetigen",
+      "conditional": {
+        "hide": "=kategoriegewichtung_flexibilitaet +\nkategoriegewichtung_zeit +\nkategoriegewichtung_qualitaet +\nkategoriegewichtung_informationsfaehigkeit != 100"
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "height": 10,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_15b2wv7",
+        "columns": null
+      },
+      "id": "Field_0fm2he9"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0p47hfm",
+        "columns": 7
+      },
+      "id": "Field_0nf2cof"
+    },
+    {
+      "action": "submit",
+      "label": "Bestätigen",
+      "type": "button",
+      "layout": {
+        "row": "Row_0p47hfm",
+        "columns": 2
+      },
+      "id": "Field_1dcqna5",
+      "properties": {},
+      "conditional": {
+        "hide": "=kategoriegewichtung_flexibilitaet +\nkategoriegewichtung_zeit +\nkategoriegewichtung_qualitaet +\nkategoriegewichtung_informationsfaehigkeit\n!= 100"
+      }
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0p47hfm",
+        "columns": 7
+      },
+      "id": "Field_1hn6ml0"
+    }
+  ],
+  "type": "default",
+  "id": "form_gewichtung",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.16.0"
+  },
+  "schemaVersion": 11
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_3idc1ik">{
+  "components": [
+    {
+      "text": "# Gewichtung der Kategorien",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0a96spd",
+        "columns": null
+      },
+      "id": "Field_060azvk"
+    },
+    {
+      "text": "Passen Sie in diesem Abschnitt die **prozentuale Gewichtung** der einzenen **Kategorien** an (in Summe 100%*).\nKlicken Sie anschließend auf **Bestätigen**. \n* *_Hinweis: Muss eingehalten werden, ansonsten keine Bestätigung möglich_.",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0v0uopg",
+        "columns": null
+      },
+      "id": "Field_1v1gboc"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_093e8cg",
+        "columns": null
+      },
+      "id": "Field_0wsu0ze"
+    },
+    {
+      "label": "Flexibilität",
+      "type": "number",
+      "layout": {
+        "row": "Row_093e8cg",
+        "columns": 4
+      },
+      "id": "Field_1pas8ku",
+      "key": "kategoriegewichtung_flexibilitaet",
+      "appearance": {
+        "suffixAdorner": "%"
+      },
+      "properties": {}
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_093e8cg",
+        "columns": null
+      },
+      "id": "Field_1t5zotb"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1k163c7",
+        "columns": null
+      },
+      "id": "Field_0lpzsrb"
+    },
+    {
+      "label": "Zeit",
+      "type": "number",
+      "layout": {
+        "row": "Row_1k163c7",
+        "columns": 4
+      },
+      "id": "Field_1s97lul",
+      "key": "kategoriegewichtung_zeit",
+      "appearance": {
+        "suffixAdorner": "%"
+      }
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1k163c7",
+        "columns": null
+      },
+      "id": "Field_1tn1ska"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0u1pvfs",
+        "columns": null
+      },
+      "id": "Field_1qgb5fw"
+    },
+    {
+      "label": "Qualität",
+      "type": "number",
+      "layout": {
+        "row": "Row_0u1pvfs",
+        "columns": 4
+      },
+      "id": "Field_1lckv15",
+      "key": "kategoriegewichtung_qualitaet",
+      "appearance": {
+        "suffixAdorner": "%"
+      }
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0u1pvfs",
+        "columns": null
+      },
+      "id": "Field_1g0qapk"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1a2813x",
+        "columns": null
+      },
+      "id": "Field_0g1o1hw"
+    },
+    {
+      "label": "Informationsfähigkeit",
+      "type": "number",
+      "layout": {
+        "row": "Row_1a2813x",
+        "columns": 4
+      },
+      "id": "Field_0351mbu",
+      "key": "kategoriegewichtung_informationsfaehigkeit",
+      "appearance": {
+        "suffixAdorner": "%"
+      }
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1a2813x",
+        "columns": null
+      },
+      "id": "Field_02i7m06"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_12y51el",
+        "columns": 6
+      },
+      "id": "Field_063ha4e"
+    },
+    {
+      "values": [
+        {
+          "label": "Σ Kategorien = 100%",
+          "value": "true"
+        }
+      ],
+      "label": "Bestätigen",
+      "type": "radio",
+      "layout": {
+        "row": "Row_12y51el",
+        "columns": 6
+      },
+      "id": "Field_19vjtvq",
+      "key": "radio_bestaetigen",
+      "conditional": {
+        "hide": "=kategoriegewichtung_flexibilitaet +\nkategoriegewichtung_zeit +\nkategoriegewichtung_qualitaet +\nkategoriegewichtung_informationsfaehigkeit != 100"
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "height": 10,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_15b2wv7",
+        "columns": null
+      },
+      "id": "Field_0fm2he9"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0p47hfm",
+        "columns": 7
+      },
+      "id": "Field_0nf2cof"
+    },
+    {
+      "action": "submit",
+      "label": "Bestätigen",
+      "type": "button",
+      "layout": {
+        "row": "Row_0p47hfm",
+        "columns": 2
+      },
+      "id": "Field_1dcqna5",
+      "properties": {},
+      "conditional": {
+        "hide": "=kategoriegewichtung_flexibilitaet +\nkategoriegewichtung_zeit +\nkategoriegewichtung_qualitaet +\nkategoriegewichtung_informationsfaehigkeit\n!= 100"
+      }
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0p47hfm",
+        "columns": 7
+      },
+      "id": "Field_1hn6ml0"
+    }
+  ],
+  "type": "default",
+  "id": "form_gewichtung",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.16.0"
+  },
+  "schemaVersion": 11
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_3e4p7sg">{
+  "components": [
+    {
+      "text": "# Lieferantenauswahl",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_00pzi1w",
+        "columns": null
+      },
+      "id": "Field_05vouif"
+    },
+    {
+      "text": "Wählen Sie in diesem Abschnitt einen **Lieferanten** aus dem **Drop-Down Menü** aus,\ndessen Antworten Sie überprüfen möchten. Klicken Sie anschließend auf **Bestätigen**.\n\n*_Hinweis: Womöglich ist der ausgewählte Lieferant nocht nicht im aktuellen Projekt vorhanden._\n_In diesem Fall wird der Lieferant hinzugefügt und per E-Mail benachrichtigt._\n\n",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_04ulrsl",
+        "columns": null
+      },
+      "id": "Field_1docyqg"
+    },
+    {
+      "label": "Lieferant",
+      "type": "select",
+      "layout": {
+        "row": "Row_1wtz9gv",
+        "columns": null
+      },
+      "id": "Field_01aomv5",
+      "key": "lieferant_selection",
+      "valuesKey": "lieferanten"
+    },
+    {
+      "action": "submit",
+      "label": "Bestätigen",
+      "type": "button",
+      "layout": {
+        "row": "Row_1kk38fg",
+        "columns": null
+      },
+      "id": "Field_0pa36mf",
+      "conditional": {
+        "hide": "=lieferant_selection = null"
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_lieferantenauswahl",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.16.0"
+  },
+  "schemaVersion": 11
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_0p485ca">{
+  "components": [
+    {
+      "text": "# Anmeldung",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0lds7e2",
+        "columns": null
+      },
+      "id": "Field_01a57h3"
+    },
+    {
+      "text": "Bitte loggen Sie sich mit Ihrem Benutzernamen und Passwort ein.",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1k3wmsf",
+        "columns": null
+      },
+      "id": "Field_0oxe4i9"
+    },
+    {
+      "label": "Benutzername",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1nbs9io",
+        "columns": 8
+      },
+      "id": "Field_1leemxw",
+      "key": "textfield_benutzername"
+    },
+    {
+      "label": "Passwort",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1olz8zu",
+        "columns": 8
+      },
+      "id": "Field_11awbhw",
+      "key": "textfield_passwort"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0tv0bl7",
+        "columns": null
+      },
+      "id": "Field_0gq91l6"
+    },
+    {
+      "action": "submit",
+      "label": "Anmelden",
+      "type": "button",
+      "layout": {
+        "row": "Row_0pw6vts",
+        "columns": null
+      },
+      "id": "Field_1v5n9gx",
+      "conditional": {
+        "hide": "=textfield_benutzername or textfield_passwort = \"\""
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_anmeldung",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.16.0"
+  },
+  "schemaVersion": 11
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_0f0nddh">{
+  "components": [
+    {
+      "text": "# Fragebogen",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_15moxpl",
+        "columns": null
+      },
+      "id": "Field_1cu9rwt"
+    },
+    {
+      "text": "Bitte beantworten Sie die folgenden Fragen vollständig.\nKlicken Sie nach der Bearbeitung auf **Speichern**.",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1nucijb",
+        "columns": null
+      },
+      "id": "Field_04q8l9g"
+    },
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[1].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_06x9pf6",
+                "columns": null
+              },
+              "id": "Field_0se44lj"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_0nkcipx",
+                "columns": null
+              },
+              "id": "Field_09gcm40",
+              "key": "select_k1_f1",
+              "valuesKey": "antworten_Frage_1",
+              "properties": {
+                "key1": "value"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 1",
+          "type": "group",
+          "layout": {
+            "row": "Row_197k6l2",
+            "columns": null
+          },
+          "id": "Field_073g1cv"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[2].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1w94dan",
+                "columns": null
+              },
+              "id": "Field_160lqxh"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_1dzr1jz",
+                "columns": null
+              },
+              "id": "Field_1s5hw5m",
+              "key": "select_k1_f2",
+              "valuesKey": "antworten_Frage_2"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 2",
+          "type": "group",
+          "layout": {
+            "row": "Row_1y3i11l",
+            "columns": null
+          },
+          "id": "Field_0o9jypi"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[3].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1u76xgt",
+                "columns": null
+              },
+              "id": "Field_055vxho"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_09asalx",
+                "columns": null
+              },
+              "id": "Field_0fk6cv6",
+              "key": "select_k1_f3",
+              "valuesKey": "antworten_Frage_3"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 3",
+          "type": "group",
+          "layout": {
+            "row": "Row_0e8uaq1",
+            "columns": null
+          },
+          "id": "Field_0m4w6xx"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[4].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0uxzual",
+                "columns": null
+              },
+              "id": "Field_031qxoj"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_0bbq1u3",
+                "columns": null
+              },
+              "id": "Field_1xhnx0o",
+              "key": "select_k1_f4",
+              "valuesKey": "antworten_Frage_4"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 4",
+          "type": "group",
+          "layout": {
+            "row": "Row_1tlm96l",
+            "columns": null
+          },
+          "id": "Field_17grhzd"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[5].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0upesu2",
+                "columns": null
+              },
+              "id": "Field_014iwdx"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_1o3t3i5",
+                "columns": null
+              },
+              "id": "Field_0kq8oaz",
+              "key": "select_k1_f5",
+              "valuesKey": "antworten_Frage_5"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 5",
+          "type": "group",
+          "layout": {
+            "row": "Row_0j37v3k",
+            "columns": null
+          },
+          "id": "Field_1dlrfm3"
+        }
+      ],
+      "showOutline": true,
+      "label": "Flexibilität",
+      "type": "group",
+      "layout": {
+        "row": "Row_0qgfmis",
+        "columns": null
+      },
+      "id": "Field_0sw27rx"
+    },
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[6].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1v26la0",
+                "columns": null
+              },
+              "id": "Field_18yb0oi"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_1pdjtvy",
+                "columns": null
+              },
+              "id": "Field_1rsk75e",
+              "key": "select_k2_f1",
+              "valuesKey": "antworten_Frage_6"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 1",
+          "type": "group",
+          "layout": {
+            "row": "Row_03tvwub",
+            "columns": null
+          },
+          "id": "Field_0uj1lrt"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[7].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0294adf",
+                "columns": null
+              },
+              "id": "Field_0zz7mu0"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_0desdq8",
+                "columns": null
+              },
+              "id": "Field_1p5sw5m",
+              "key": "select_k2_f2",
+              "valuesKey": "antworten_Frage_7"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 2",
+          "type": "group",
+          "layout": {
+            "row": "Row_1yx6ylh",
+            "columns": null
+          },
+          "id": "Field_143s3xq"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[8].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1w2cbao",
+                "columns": null
+              },
+              "id": "Field_04194zb"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_0l2h5j8",
+                "columns": null
+              },
+              "id": "Field_04fo0cj",
+              "key": "select_k2_f3",
+              "valuesKey": "antworten_Frage_8"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 3",
+          "type": "group",
+          "layout": {
+            "row": "Row_1768itg",
+            "columns": null
+          },
+          "id": "Field_1bx1wtb"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[9].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0dlx27t",
+                "columns": null
+              },
+              "id": "Field_0sk0e4x"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_1injtt8",
+                "columns": null
+              },
+              "id": "Field_0c1stsx",
+              "key": "select_k2_f4",
+              "valuesKey": "antworten_Frage_9"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 4",
+          "type": "group",
+          "layout": {
+            "row": "Row_0dz5pha",
+            "columns": null
+          },
+          "id": "Field_1uxpwap"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[10].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0noue93",
+                "columns": null
+              },
+              "id": "Field_0jf7ee1"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_1mvucau",
+                "columns": null
+              },
+              "id": "Field_1wqqtfq",
+              "key": "select_k2_f5",
+              "valuesKey": "antworten_Frage_10"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 5",
+          "type": "group",
+          "layout": {
+            "row": "Row_1m8qsr1",
+            "columns": null
+          },
+          "id": "Field_0ekg89a"
+        }
+      ],
+      "showOutline": true,
+      "label": "Zeit",
+      "type": "group",
+      "layout": {
+        "row": "Row_121i9xe",
+        "columns": null
+      },
+      "id": "Field_0gdmym5"
+    },
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[11].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1xlabyv",
+                "columns": null
+              },
+              "id": "Field_0b8moof"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_0y8xrg6",
+                "columns": null
+              },
+              "id": "Field_02gpnxw",
+              "key": "select_k3_f1",
+              "valuesKey": "antworten_Frage_11"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 1",
+          "type": "group",
+          "layout": {
+            "row": "Row_17siuay",
+            "columns": null
+          },
+          "id": "Field_0k8acrn"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[12].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0obosdl",
+                "columns": null
+              },
+              "id": "Field_02no2kz"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_0054ujg",
+                "columns": null
+              },
+              "id": "Field_0gi1k1w",
+              "key": "select_k3_f2",
+              "valuesKey": "antworten_Frage_12"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 2",
+          "type": "group",
+          "layout": {
+            "row": "Row_1hgptqx",
+            "columns": null
+          },
+          "id": "Field_1iyqwsb"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[13].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_146ozcf",
+                "columns": null
+              },
+              "id": "Field_03dfkow"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_1k1da2z",
+                "columns": null
+              },
+              "id": "Field_0gnlyrc",
+              "key": "select_k3_f3",
+              "valuesKey": "antworten_Frage_13"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 3",
+          "type": "group",
+          "layout": {
+            "row": "Row_17n8u3k",
+            "columns": null
+          },
+          "id": "Field_0j1yr4r"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[14].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1io5949",
+                "columns": null
+              },
+              "id": "Field_109u9cd"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_1pz7qt8",
+                "columns": null
+              },
+              "id": "Field_1y126oq",
+              "key": "select_k3_f4",
+              "valuesKey": "antworten_Frage_14"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 4",
+          "type": "group",
+          "layout": {
+            "row": "Row_0nrik0p",
+            "columns": null
+          },
+          "id": "Field_1gbjlkn"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[15].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_049kket",
+                "columns": null
+              },
+              "id": "Field_18kp649"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_0zt5k5q",
+                "columns": null
+              },
+              "id": "Field_0rameuv",
+              "key": "select_k3_f5",
+              "valuesKey": "antworten_Frage_15"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 5",
+          "type": "group",
+          "layout": {
+            "row": "Row_09o59wp",
+            "columns": null
+          },
+          "id": "Field_07ea22p"
+        }
+      ],
+      "showOutline": true,
+      "label": "Qualität",
+      "type": "group",
+      "layout": {
+        "row": "Row_1fco6w0",
+        "columns": null
+      },
+      "id": "Field_1m7vj4d"
+    },
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[16].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_083lc84",
+                "columns": null
+              },
+              "id": "Field_0lkgfis"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_0iirvuu",
+                "columns": null
+              },
+              "id": "Field_1kanlww",
+              "key": "select_k4_f1",
+              "valuesKey": "antworten_Frage_16"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 1",
+          "type": "group",
+          "layout": {
+            "row": "Row_16k7gy4",
+            "columns": null
+          },
+          "id": "Field_17om9xr"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[17].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1ecr353",
+                "columns": null
+              },
+              "id": "Field_1tueori"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_1y5f4j0",
+                "columns": null
+              },
+              "id": "Field_1mg56kq",
+              "key": "select_k4_f2",
+              "valuesKey": "antworten_Frage_17"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 2",
+          "type": "group",
+          "layout": {
+            "row": "Row_0441u5n",
+            "columns": null
+          },
+          "id": "Field_08mq902"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[18].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0ffrqei",
+                "columns": null
+              },
+              "id": "Field_1xdty46"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_0az33iq",
+                "columns": null
+              },
+              "id": "Field_09dgxdq",
+              "key": "select_k4_f3",
+              "valuesKey": "antworten_Frage_18"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 3",
+          "type": "group",
+          "layout": {
+            "row": "Row_0plpp7d",
+            "columns": null
+          },
+          "id": "Field_12ttnf7"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[19].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1p8ppcn",
+                "columns": null
+              },
+              "id": "Field_08gzjos"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_01f5ydv",
+                "columns": null
+              },
+              "id": "Field_057047m",
+              "key": "select_k4_f4",
+              "valuesKey": "antworten_Frage_19"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 4",
+          "type": "group",
+          "layout": {
+            "row": "Row_16kegx8",
+            "columns": null
+          },
+          "id": "Field_0vlkgqj"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[20].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0qcm3k2",
+                "columns": null
+              },
+              "id": "Field_10hwxhu"
+            },
+            {
+              "label": "Antworten",
+              "type": "select",
+              "layout": {
+                "row": "Row_0fbg1rz",
+                "columns": null
+              },
+              "id": "Field_1dpsnym",
+              "key": "select_k4_f5",
+              "valuesKey": "antworten_Frage_20"
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 5",
+          "type": "group",
+          "layout": {
+            "row": "Row_19si4e8",
+            "columns": null
+          },
+          "id": "Field_1y2iwgt"
+        }
+      ],
+      "showOutline": true,
+      "label": "Informationsfähigkeit",
+      "type": "group",
+      "layout": {
+        "row": "Row_141w6bb",
+        "columns": null
+      },
+      "id": "Field_11wk30d"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0668x37",
+        "columns": 7
+      },
+      "id": "Field_0jf1tdr"
+    },
+    {
+      "action": "submit",
+      "label": "Speichern",
+      "type": "button",
+      "layout": {
+        "row": "Row_0668x37",
+        "columns": 2
+      },
+      "id": "Field_0f88q2x"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0668x37",
+        "columns": null
+      },
+      "id": "Field_0srqi6g"
+    }
+  ],
+  "type": "default",
+  "id": "Form_fragekatalogBearbeitung",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.16.0"
+  },
+  "schemaVersion": 11
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_30363n8">{
+  "components": [
+    {
+      "text": "# Ranking und Antworten",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1s8t4mi",
+        "columns": null
+      },
+      "id": "Field_0pkgepf"
+    },
+    {
+      "text": "In diesem Abschnitt können Sie die Antworten des gewählten Lieferanten und dessen Ranking im aktuellen Projekt betrachten.",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1c07j3b",
+        "columns": null
+      },
+      "id": "Field_0och6im"
+    },
+    {
+      "text": "**Ausgewählter Lieferant**:",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1lmpoap",
+        "columns": 4
+      },
+      "id": "Field_0x0ifn6"
+    },
+    {
+      "text": "=benutzername",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1lmpoap",
+        "columns": 6
+      },
+      "id": "Field_0pruu7g"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1lmpoap",
+        "columns": 2
+      },
+      "id": "Field_0sj5zvj"
+    },
+    {
+      "text": "ID:",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1lmpoap",
+        "columns": null
+      },
+      "id": "Field_0eyhdpb"
+    },
+    {
+      "text": "=lieferant_selection",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1lmpoap",
+        "columns": null
+      },
+      "id": "Field_16vcaz8"
+    },
+    {
+      "text": "**Projekt**:",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0w34ke8",
+        "columns": 4
+      },
+      "id": "Field_11q93im"
+    },
+    {
+      "text": "=ausgewaehltesprojekt_name",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0w34ke8",
+        "columns": 6
+      },
+      "id": "Field_039k5q3"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0w34ke8",
+        "columns": 2
+      },
+      "id": "Field_0rd4i4v"
+    },
+    {
+      "text": "ID:",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0w34ke8",
+        "columns": 2
+      },
+      "id": "Field_1himt1d"
+    },
+    {
+      "text": "=ausgewaehltesprojekt_id",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0w34ke8",
+        "columns": null
+      },
+      "id": "Field_191es2i"
+    },
+    {
+      "text": "**Score** (gesamt):",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0uuxkgt",
+        "columns": 4
+      },
+      "id": "Field_0njs50m"
+    },
+    {
+      "text": "=score_supplier",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0uuxkgt",
+        "columns": 4
+      },
+      "id": "Field_1pp6flh"
+    },
+    {
+      "text": "von",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0uuxkgt",
+        "columns": 4
+      },
+      "id": "Field_1ck30p5"
+    },
+    {
+      "text": "=maxScore",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0uuxkgt",
+        "columns": null
+      },
+      "id": "Field_0emye86"
+    },
+    {
+      "text": "**Ranking**:",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0bw5nce",
+        "columns": 4
+      },
+      "id": "Field_1i0si9t"
+    },
+    {
+      "text": "=ranking_supplier",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0bw5nce",
+        "columns": null
+      },
+      "id": "Field_18s2ucz"
+    },
+    {
+      "text": "von",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0bw5nce",
+        "columns": null
+      },
+      "id": "Field_17nprnb"
+    },
+    {
+      "text": "=allSuppliers",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0bw5nce",
+        "columns": null
+      },
+      "id": "Field_0om76gl"
+    },
+    {
+      "height": 30,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0pmd3xp",
+        "columns": null
+      },
+      "id": "Field_0xzbpha"
+    },
+    {
+      "text": "# Ranking-Liste aller Lieferanten des Projektes",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_109uuwb",
+        "columns": null
+      },
+      "id": "Field_1bm1s7j"
+    },
+    {
+      "components": [
+        {
+          "text": "=ranking_liste",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1bzoylr",
+            "columns": null
+          },
+          "id": "Field_1k3c7gk"
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_13gsuxy",
+        "columns": null
+      },
+      "id": "Field_0xhnxyn"
+    },
+    {
+      "height": 30,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_18hmoes",
+        "columns": null
+      },
+      "id": "Field_1ut4zc3"
+    },
+    {
+      "text": "# Antworten des Lieferanten:",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0g45f88",
+        "columns": null
+      },
+      "id": "Field_072g8q4"
+    },
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[1].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1ckfznm",
+                "columns": null
+              },
+              "id": "Field_0tugxpd"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_17l35gd",
+                "columns": 2
+              },
+              "id": "Field_1aqdyln"
+            },
+            {
+              "text": "=select_k1_f1",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_17l35gd",
+                "columns": null
+              },
+              "id": "Field_13ybash"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_15l733s",
+                "columns": null
+              },
+              "id": "Field_0k3rhan",
+              "conditional": {
+                "hide": "=frage_1_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 1:",
+          "type": "group",
+          "layout": {
+            "row": "Row_0bln2ow",
+            "columns": null
+          },
+          "id": "Field_1l8pswj"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[2].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0mo45go",
+                "columns": null
+              },
+              "id": "Field_1mu5qe9"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0eb2fix",
+                "columns": 2
+              },
+              "id": "Field_0cn7oil"
+            },
+            {
+              "text": "=select_k1_f2",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0eb2fix",
+                "columns": null
+              },
+              "id": "Field_06cw8no"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0a94jjx",
+                "columns": null
+              },
+              "id": "Field_1f1ihnb",
+              "conditional": {
+                "hide": "=frage_2_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 2:",
+          "type": "group",
+          "layout": {
+            "row": "Row_0hg1vat",
+            "columns": null
+          },
+          "id": "Field_0eoynpy"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[3].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1a6x1xn",
+                "columns": null
+              },
+              "id": "Field_1bm2yyw"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0usom66",
+                "columns": 2
+              },
+              "id": "Field_0ett7jz"
+            },
+            {
+              "text": "=select_k1_f3",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0usom66",
+                "columns": null
+              },
+              "id": "Field_195o81g"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_156kfcc",
+                "columns": null
+              },
+              "id": "Field_0kb4z4h",
+              "conditional": {
+                "hide": "=frage_3_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 3:",
+          "type": "group",
+          "layout": {
+            "row": "Row_1gzw43o",
+            "columns": null
+          },
+          "id": "Field_0n845dt"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[4].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0t64wp2",
+                "columns": null
+              },
+              "id": "Field_0t23t10"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0epjrvv",
+                "columns": 3
+              },
+              "id": "Field_0sya3g9"
+            },
+            {
+              "text": "=select_k1_f4",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0epjrvv",
+                "columns": null
+              },
+              "id": "Field_13xyxhx"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0i6vnzk",
+                "columns": null
+              },
+              "id": "Field_1r4x1av",
+              "conditional": {
+                "hide": "=frage_4_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 4:",
+          "type": "group",
+          "layout": {
+            "row": "Row_19ss2lv",
+            "columns": null
+          },
+          "id": "Field_19eru98"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[5].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0z4p1ke",
+                "columns": null
+              },
+              "id": "Field_14r8o4i"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0p1l5jw",
+                "columns": 2
+              },
+              "id": "Field_1idxz4e"
+            },
+            {
+              "text": "=select_k1_f5",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0p1l5jw",
+                "columns": null
+              },
+              "id": "Field_1j7eoxp"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0mk7jry",
+                "columns": null
+              },
+              "id": "Field_1ibpnjl",
+              "conditional": {
+                "hide": "=frage_5_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 5:",
+          "type": "group",
+          "layout": {
+            "row": "Row_103qgbt",
+            "columns": null
+          },
+          "id": "Field_1qiqy4g"
+        },
+        {
+          "height": 60,
+          "label": "Spacer",
+          "type": "spacer",
+          "layout": {
+            "row": "Row_0iznd2x",
+            "columns": null
+          },
+          "id": "Field_1j0jmv2"
+        },
+        {
+          "text": "**Score Flexibilität**:",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1vgittr",
+            "columns": 4
+          },
+          "id": "Field_1isscg1"
+        },
+        {
+          "text": "=score_flexibilitaet",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1vgittr",
+            "columns": null
+          },
+          "id": "Field_11c11kg"
+        },
+        {
+          "text": "von",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1vgittr",
+            "columns": 2
+          },
+          "id": "Field_1kl4gfy"
+        },
+        {
+          "text": "=maxScore_flexibilitaet",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1vgittr",
+            "columns": 4
+          },
+          "id": "Field_0oky7rx"
+        },
+        {
+          "text": "**Mittelwert-Flexibilität**:",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0noejnz",
+            "columns": 4
+          },
+          "id": "Field_1471j8q"
+        },
+        {
+          "text": "=mittelwert_flexibilitaet",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0noejnz",
+            "columns": null
+          },
+          "id": "Field_0a3n7i5"
+        }
+      ],
+      "showOutline": true,
+      "label": "Flexibilität",
+      "type": "group",
+      "layout": {
+        "row": "Row_1y7qko8",
+        "columns": null
+      },
+      "id": "Field_1nv64y4"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1uhvu0l",
+        "columns": null
+      },
+      "id": "Field_1agakij"
+    },
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[6].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1u61na9",
+                "columns": null
+              },
+              "id": "Field_1st23uu"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_02cvnxa",
+                "columns": 2
+              },
+              "id": "Field_0qvdm11"
+            },
+            {
+              "text": "=select_k2_f1",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_02cvnxa",
+                "columns": null
+              },
+              "id": "Field_07hosf2"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0ud420k",
+                "columns": null
+              },
+              "id": "Field_03proz8",
+              "conditional": {
+                "hide": "=frage_6_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 1:",
+          "type": "group",
+          "layout": {
+            "row": "Row_1ltlywx",
+            "columns": null
+          },
+          "id": "Field_1gvdhm2"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[7].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1vwfad8",
+                "columns": null
+              },
+              "id": "Field_00josi7"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0jtavek",
+                "columns": 2
+              },
+              "id": "Field_1h9c6bo"
+            },
+            {
+              "text": "=select_k2_f2",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0jtavek",
+                "columns": null
+              },
+              "id": "Field_1flh8pz"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_02528uk",
+                "columns": null
+              },
+              "id": "Field_1owo4a8",
+              "conditional": {
+                "hide": "=frage_7_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 2:",
+          "type": "group",
+          "layout": {
+            "row": "Row_12k2gn7",
+            "columns": null
+          },
+          "id": "Field_0vpjyui"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[8].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0dbxeki",
+                "columns": null
+              },
+              "id": "Field_1ohknl8"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_013o1sw",
+                "columns": 2
+              },
+              "id": "Field_09v355b"
+            },
+            {
+              "text": "=select_k2_f3",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_013o1sw",
+                "columns": null
+              },
+              "id": "Field_0g4n2z6"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1vh9cob",
+                "columns": null
+              },
+              "id": "Field_0tyyijs",
+              "conditional": {
+                "hide": "=frage_8_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 3:",
+          "type": "group",
+          "layout": {
+            "row": "Row_1d1yqie",
+            "columns": null
+          },
+          "id": "Field_1fexqd6"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[9].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0es14ja",
+                "columns": null
+              },
+              "id": "Field_0e5ddr1"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_097baxz",
+                "columns": 2
+              },
+              "id": "Field_1n9gsfe"
+            },
+            {
+              "text": "=select_k2_f4",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_097baxz",
+                "columns": null
+              },
+              "id": "Field_0xhc3q1"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0gdp811",
+                "columns": null
+              },
+              "id": "Field_1f7sb0r",
+              "conditional": {
+                "hide": "=frage_9_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 4:",
+          "type": "group",
+          "layout": {
+            "row": "Row_050stt3",
+            "columns": null
+          },
+          "id": "Field_1g31i5n"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[10].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_020qaqh",
+                "columns": null
+              },
+              "id": "Field_1bas0y6"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1mgc673",
+                "columns": 2
+              },
+              "id": "Field_0dvm59h"
+            },
+            {
+              "text": "=select_k2_f5",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1mgc673",
+                "columns": null
+              },
+              "id": "Field_141l3oq"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0n6ye49",
+                "columns": null
+              },
+              "id": "Field_06nr9w1",
+              "conditional": {
+                "hide": "=frage_10_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 5:",
+          "type": "group",
+          "layout": {
+            "row": "Row_05txphf",
+            "columns": null
+          },
+          "id": "Field_0tdrn02"
+        },
+        {
+          "height": 60,
+          "label": "Spacer",
+          "type": "spacer",
+          "layout": {
+            "row": "Row_1y2o9k5",
+            "columns": null
+          },
+          "id": "Field_00ignjx"
+        },
+        {
+          "text": "**Score Zeit**:",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1xfzi57",
+            "columns": 3
+          },
+          "id": "Field_18c1ymm"
+        },
+        {
+          "text": "=score_zeit",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1xfzi57",
+            "columns": null
+          },
+          "id": "Field_1ypyang"
+        },
+        {
+          "text": "von",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1xfzi57",
+            "columns": 2
+          },
+          "id": "Field_1me6h87"
+        },
+        {
+          "text": "=maxScore_zeit",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1xfzi57",
+            "columns": null
+          },
+          "id": "Field_1p4dxh0"
+        },
+        {
+          "text": "**Mittelwert-Zeit**:",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0dcglyc",
+            "columns": 3
+          },
+          "id": "Field_11pm4h2"
+        },
+        {
+          "text": "=mittelwert_zeit",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0dcglyc",
+            "columns": null
+          },
+          "id": "Field_1q0frwo"
+        }
+      ],
+      "showOutline": true,
+      "label": "Zeit",
+      "type": "group",
+      "layout": {
+        "row": "Row_0sqkkd4",
+        "columns": null
+      },
+      "id": "Field_0a6t292"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0t7j8hi",
+        "columns": null
+      },
+      "id": "Field_0xsor35"
+    },
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[11].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0zcjqk7",
+                "columns": null
+              },
+              "id": "Field_1mhqnjl"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_02ju5mu",
+                "columns": 2
+              },
+              "id": "Field_1xg6ggz"
+            },
+            {
+              "text": "=select_k3_f1",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_02ju5mu",
+                "columns": null
+              },
+              "id": "Field_026y2qt"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_12s5we0",
+                "columns": null
+              },
+              "id": "Field_1z0y998",
+              "conditional": {
+                "hide": "=frage_11_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 1:",
+          "type": "group",
+          "layout": {
+            "row": "Row_031udj2",
+            "columns": null
+          },
+          "id": "Field_17yxhwm"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[12].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0e5l0od",
+                "columns": null
+              },
+              "id": "Field_1rprkyq"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1wqp5x6",
+                "columns": 2
+              },
+              "id": "Field_04cjn9f"
+            },
+            {
+              "text": "=select_k3_f2",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1wqp5x6",
+                "columns": null
+              },
+              "id": "Field_0xd7wav"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_09rnoz4",
+                "columns": null
+              },
+              "id": "Field_1kkdtq2",
+              "conditional": {
+                "hide": "=frage_12_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage  2:",
+          "type": "group",
+          "layout": {
+            "row": "Row_1t74yu4",
+            "columns": null
+          },
+          "id": "Field_0egerui"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[13].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_13zaqh3",
+                "columns": null
+              },
+              "id": "Field_0uhoi2z"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_11dhigu",
+                "columns": 2
+              },
+              "id": "Field_1p21h9y"
+            },
+            {
+              "text": "=select_k3_f3",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_11dhigu",
+                "columns": null
+              },
+              "id": "Field_10n2t6o"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_11xw6us",
+                "columns": null
+              },
+              "id": "Field_1rw4fqv",
+              "conditional": {
+                "hide": "=frage_13_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 3:",
+          "type": "group",
+          "layout": {
+            "row": "Row_04mo1os",
+            "columns": null
+          },
+          "id": "Field_015dndm"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[14].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0qnv52n",
+                "columns": null
+              },
+              "id": "Field_1988e9o"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0h9ww1o",
+                "columns": 2
+              },
+              "id": "Field_0icehed"
+            },
+            {
+              "text": "=select_k3_f4",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0h9ww1o",
+                "columns": null
+              },
+              "id": "Field_0elcvw7"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1li286i",
+                "columns": null
+              },
+              "id": "Field_10d0t7r",
+              "conditional": {
+                "hide": "=frage_14_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 4:",
+          "type": "group",
+          "layout": {
+            "row": "Row_074pqrd",
+            "columns": null
+          },
+          "id": "Field_0ujsx0u"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[15].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1x5p11e",
+                "columns": null
+              },
+              "id": "Field_1jhxp1g"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_18sm44m",
+                "columns": 2
+              },
+              "id": "Field_0hf1n3o"
+            },
+            {
+              "text": "=select_k3_f5",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_18sm44m",
+                "columns": null
+              },
+              "id": "Field_1r30cf9"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1f1lykf",
+                "columns": null
+              },
+              "id": "Field_0zckg7v",
+              "conditional": {
+                "hide": "=frage_15_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 5:",
+          "type": "group",
+          "layout": {
+            "row": "Row_1l1a8ye",
+            "columns": null
+          },
+          "id": "Field_1of7r4h"
+        },
+        {
+          "height": 60,
+          "label": "Spacer",
+          "type": "spacer",
+          "layout": {
+            "row": "Row_03uja66",
+            "columns": null
+          },
+          "id": "Field_01wdf7x"
+        },
+        {
+          "text": "**Score Qualität**:",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1x3n0da",
+            "columns": 3
+          },
+          "id": "Field_1392b03"
+        },
+        {
+          "text": "=score_qualitaet",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1x3n0da",
+            "columns": null
+          },
+          "id": "Field_0n26h00"
+        },
+        {
+          "text": "von",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1x3n0da",
+            "columns": 2
+          },
+          "id": "Field_1n6mfuv"
+        },
+        {
+          "text": "=maxScore_qualitaet",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_1x3n0da",
+            "columns": null
+          },
+          "id": "Field_0sf7bhh"
+        },
+        {
+          "text": "**Mittelwert-Qualität**:",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0ohzqbk",
+            "columns": 3
+          },
+          "id": "Field_06ytt2v"
+        },
+        {
+          "text": "=mittelwert_qualitaet",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0ohzqbk",
+            "columns": null
+          },
+          "id": "Field_076w7wg"
+        }
+      ],
+      "showOutline": true,
+      "label": "Qualität",
+      "type": "group",
+      "layout": {
+        "row": "Row_1ukz7ph",
+        "columns": null
+      },
+      "id": "Field_0fthwz2"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1374e01",
+        "columns": null
+      },
+      "id": "Field_0duxt5n"
+    },
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[16].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0axwyw1",
+                "columns": null
+              },
+              "id": "Field_07or7cz"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_10pln46",
+                "columns": 2
+              },
+              "id": "Field_15dlnyu"
+            },
+            {
+              "text": "=select_k4_f1",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_10pln46",
+                "columns": null
+              },
+              "id": "Field_0g7e9b7"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_037h9fm",
+                "columns": null
+              },
+              "id": "Field_1iyj6gh",
+              "conditional": {
+                "hide": "=frage_16_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 1:",
+          "type": "group",
+          "layout": {
+            "row": "Row_0oz4lg2",
+            "columns": null
+          },
+          "id": "Field_0gp56gd"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[17].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1laju62",
+                "columns": null
+              },
+              "id": "Field_0zryxe2"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_08wzand",
+                "columns": 2
+              },
+              "id": "Field_032qxmd"
+            },
+            {
+              "text": "=select_k4_f2",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_08wzand",
+                "columns": null
+              },
+              "id": "Field_0vgzvw1"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0hekyh1",
+                "columns": null
+              },
+              "id": "Field_0dnpukw",
+              "conditional": {
+                "hide": "=frage_17_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 2:",
+          "type": "group",
+          "layout": {
+            "row": "Row_1s8ve8y",
+            "columns": null
+          },
+          "id": "Field_1uyb0q8"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[18].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1ygqqlg",
+                "columns": null
+              },
+              "id": "Field_1arwwzi"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0cg23kt",
+                "columns": 2
+              },
+              "id": "Field_1smxbzs"
+            },
+            {
+              "text": "=select_k4_f3",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0cg23kt",
+                "columns": null
+              },
+              "id": "Field_0w3jclj"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0z3j66j",
+                "columns": null
+              },
+              "id": "Field_0drvdkg",
+              "conditional": {
+                "hide": "=frage_18_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 3:",
+          "type": "group",
+          "layout": {
+            "row": "Row_0o081m1",
+            "columns": null
+          },
+          "id": "Field_0gug9z8"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[19].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0ugei6e",
+                "columns": null
+              },
+              "id": "Field_1oysqqp"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1t35gkh",
+                "columns": 2
+              },
+              "id": "Field_156e381"
+            },
+            {
+              "text": "=select_k4_f4",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1t35gkh",
+                "columns": null
+              },
+              "id": "Field_168yb9l"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0bo5til",
+                "columns": null
+              },
+              "id": "Field_1h327wf",
+              "conditional": {
+                "hide": "=frage_19_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 4:",
+          "type": "group",
+          "layout": {
+            "row": "Row_0nbypip",
+            "columns": null
+          },
+          "id": "Field_1e6ayoq"
+        },
+        {
+          "components": [
+            {
+              "text": "=datenZumFragebogen[20].fragetext",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1lj4xlp",
+                "columns": null
+              },
+              "id": "Field_1blow0p"
+            },
+            {
+              "text": "**Antwort**:",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1v58c3g",
+                "columns": 2
+              },
+              "id": "Field_0gdoi73"
+            },
+            {
+              "text": "=select_k4_f5",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_1v58c3g",
+                "columns": null
+              },
+              "id": "Field_0m0qfaz"
+            },
+            {
+              "text": "**K.O.-KRITERIUM WURDE VERLETZT!**",
+              "label": "Text view",
+              "type": "text",
+              "layout": {
+                "row": "Row_0rszvpx",
+                "columns": null
+              },
+              "id": "Field_0mmxaiz",
+              "conditional": {
+                "hide": "=frage_20_is_ko_kriterium = false"
+              }
+            }
+          ],
+          "showOutline": true,
+          "label": "Frage 5:",
+          "type": "group",
+          "layout": {
+            "row": "Row_18vtthu",
+            "columns": null
+          },
+          "id": "Field_0cbszmi"
+        },
+        {
+          "height": 60,
+          "label": "Spacer",
+          "type": "spacer",
+          "layout": {
+            "row": "Row_12fnbke",
+            "columns": null
+          },
+          "id": "Field_0797rtg"
+        },
+        {
+          "text": "**Score Informationsfähigkeit**:",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_14815gq",
+            "columns": 5
+          },
+          "id": "Field_1gs49fc"
+        },
+        {
+          "text": "=score_informationsfaehigkeit",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_14815gq",
+            "columns": null
+          },
+          "id": "Field_1nu283w"
+        },
+        {
+          "text": "von",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_14815gq",
+            "columns": 2
+          },
+          "id": "Field_0qlysl1"
+        },
+        {
+          "text": "=maxScore_informationsfaehigkeit",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_14815gq",
+            "columns": null
+          },
+          "id": "Field_1yjx5j7"
+        },
+        {
+          "text": "**Mittelwert-Informationsfähigkeit**: ",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0fye0nk",
+            "columns": 5
+          },
+          "id": "Field_1bv1iru"
+        },
+        {
+          "text": "=mittelwert_informationsfaehigkeit",
+          "label": "Text view",
+          "type": "text",
+          "layout": {
+            "row": "Row_0fye0nk",
+            "columns": null
+          },
+          "id": "Field_1sj5o5y"
+        }
+      ],
+      "showOutline": true,
+      "label": "Informationsfähigkeit",
+      "type": "group",
+      "layout": {
+        "row": "Row_0wltj53",
+        "columns": null
+      },
+      "id": "Field_0at2rao"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1r6ltts",
+        "columns": null
+      },
+      "id": "Field_0y27xg1"
+    },
+    {
+      "values": [
+        {
+          "label": "Ja",
+          "value": "true"
+        },
+        {
+          "label": "Nein",
+          "value": "false"
+        }
+      ],
+      "label": "Neugewichtung der Kategorien vornehmen?",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0gqz6p3",
+        "columns": 16
+      },
+      "id": "Field_12uu7sa",
+      "key": "radio_kategorien_gewichten",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0xcupfn",
+        "columns": null
+      },
+      "id": "Field_15p8wrd"
+    },
+    {
+      "action": "submit",
+      "label": "Fortfahren",
+      "type": "button",
+      "layout": {
+        "row": "Row_0xcupfn",
+        "columns": 2
+      },
+      "id": "Field_0glg929"
+    },
+    {
+      "height": 60,
+      "label": "Spacer",
+      "type": "spacer",
+      "layout": {
+        "row": "Row_0xcupfn",
+        "columns": null
+      },
+      "id": "Field_0tmxrm1"
+    }
+  ],
+  "type": "default",
+  "id": "Form_ranking",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.3.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.16.0"
+  },
+  "schemaVersion": 11
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:laneSet id="LaneSet_0lw0lrk">
+      <bpmn:lane id="Lane_1btot0y" name="Portal">
+        <bpmn:flowNodeRef>Activity_1ud1lkl</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0cn5bf8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1xsbdpr</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_11obj82</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0deisjr</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0ggwm2t</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1neh1ul" name="Lieferant:innen">
+        <bpmn:flowNodeRef>Gateway_1akozmn</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1exicq0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0rc29g6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1i4ks53</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_134927e</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1t7l9zz</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1kylabx</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_15lfh44</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_0ue2zcq" name="Mitarbeiter:innen">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0kr54y3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0lqgtac</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_065uzic</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_176kvzt</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_07qs932</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0ztxu93</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0bdf6i8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1sasq83</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_07d95uh</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_04ybgkf</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0tl1ro3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0s722x8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1kd1pek</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_09slwuv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1q40nd7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0ohbvu5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1ai3uix</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0ixs62r</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_12v7haz</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1n2stb6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0xdmeu8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0dkuq2e</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_178kyci</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_17mneq2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1b468q6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1t6jnoh</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_1byb43r</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0z3z710</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_033e339</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0oi9s3k</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_04zxwz9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_04tc80y</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1rugmnc</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_171v9fh</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:sendTask id="Activity_1ud1lkl" name="neues Ranking liegt vor">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="sendNewRankingMessage" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0gksss0</bpmn:incoming>
+      <bpmn:outgoing>Flow_17t89pb</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:serviceTask id="Activity_0deisjr" name="Nutzwertanalyse durchführen und speichern">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="nutzwertanalyseDurchfuehren" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0bdikrz</bpmn:incoming>
+      <bpmn:outgoing>Flow_0gksss0</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_1akozmn">
+      <bpmn:incoming>Flow_0xlcdjb</bpmn:incoming>
+      <bpmn:incoming>Flow_1h8ni2z</bpmn:incoming>
+      <bpmn:outgoing>Flow_0mzna6l</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_1exicq0" name="Anmeldedaten korrekt?" default="Flow_06piv31">
+      <bpmn:incoming>Flow_17s6a5o</bpmn:incoming>
+      <bpmn:outgoing>Flow_1h8ni2z</bpmn:outgoing>
+      <bpmn:outgoing>Flow_06piv31</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Activity_0rc29g6" name="Anmeldedaten überprüfen">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="ueberpruefeAnmeldedaten" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_02qvf5g</bpmn:incoming>
+      <bpmn:outgoing>Flow_17s6a5o</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_1i4ks53" name="Anmelden">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_0p485ca" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0mzna6l</bpmn:incoming>
+      <bpmn:outgoing>Flow_02qvf5g</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_134927e">
+      <bpmn:incoming>Flow_06piv31</bpmn:incoming>
+      <bpmn:incoming>Flow_099by04</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gti6uq</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_0ggwm2t">
+      <bpmn:incoming>Flow_01wgron</bpmn:incoming>
+      <bpmn:incoming>Flow_1648zwq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bdikrz</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0gksss0" sourceRef="Activity_0deisjr" targetRef="Activity_1ud1lkl" />
+    <bpmn:sequenceFlow id="Flow_17t89pb" sourceRef="Activity_1ud1lkl" targetRef="Gateway_12v7haz" />
+    <bpmn:sequenceFlow id="Flow_1if3uhg" sourceRef="Activity_11obj82" targetRef="Gateway_0cn5bf8" />
+    <bpmn:sequenceFlow id="Flow_1648zwq" sourceRef="Gateway_0cn5bf8" targetRef="Gateway_0ggwm2t" />
+    <bpmn:sequenceFlow id="Flow_0zpqzrl" name="Nein" sourceRef="Gateway_0cn5bf8" targetRef="Activity_1xsbdpr">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=istVollstaendig = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_099by04" sourceRef="Activity_1xsbdpr" targetRef="Gateway_134927e" />
+    <bpmn:sequenceFlow id="Flow_1vaej7m" sourceRef="Activity_15lfh44" targetRef="Activity_11obj82" />
+    <bpmn:sequenceFlow id="Flow_0bdikrz" sourceRef="Gateway_0ggwm2t" targetRef="Activity_0deisjr" />
+    <bpmn:sequenceFlow id="Flow_0xlcdjb" sourceRef="Activity_07qs932" targetRef="Gateway_1akozmn" />
+    <bpmn:sequenceFlow id="Flow_1h8ni2z" name="Nein" sourceRef="Gateway_1exicq0" targetRef="Gateway_1akozmn">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=istGueltig = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0mzna6l" sourceRef="Gateway_1akozmn" targetRef="Activity_1i4ks53" />
+    <bpmn:sequenceFlow id="Flow_17s6a5o" sourceRef="Activity_0rc29g6" targetRef="Gateway_1exicq0" />
+    <bpmn:sequenceFlow id="Flow_06piv31" sourceRef="Gateway_1exicq0" targetRef="Gateway_134927e" />
+    <bpmn:sequenceFlow id="Flow_02qvf5g" sourceRef="Activity_1i4ks53" targetRef="Activity_0rc29g6" />
+    <bpmn:sequenceFlow id="Flow_1gti6uq" sourceRef="Gateway_134927e" targetRef="Activity_1t7l9zz" />
+    <bpmn:sequenceFlow id="Flow_1j8kovk" sourceRef="Activity_1t7l9zz" targetRef="Activity_1kylabx" />
+    <bpmn:sequenceFlow id="Flow_1suit0v" sourceRef="Activity_1kylabx" targetRef="Activity_15lfh44" />
+    <bpmn:sequenceFlow id="Flow_01wgron" sourceRef="Activity_1b468q6" targetRef="Gateway_0ggwm2t" />
+    <bpmn:sendTask id="Activity_1xsbdpr" name="Lieferant über Unvollständigkeit informieren">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="sendeE-Mail" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0zpqzrl</bpmn:incoming>
+      <bpmn:outgoing>Flow_099by04</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:exclusiveGateway id="Gateway_0cn5bf8" name="Ist der Fragebogen vollständig?" default="Flow_1648zwq">
+      <bpmn:incoming>Flow_1if3uhg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1648zwq</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0zpqzrl</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Activity_11obj82" name="Prüfung auf Vollständigkeit">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="aufVollstaendigkeitPruefen" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1vaej7m</bpmn:incoming>
+      <bpmn:outgoing>Flow_1if3uhg</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_15lfh44" name="Antworten speichern">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="speichereAntworten" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1suit0v</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vaej7m</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_1kylabx" name="Im Fragebogen auswählen">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_0f0nddh" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1j8kovk</bpmn:incoming>
+      <bpmn:outgoing>Flow_1suit0v</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_1t7l9zz" name="Antworten laden">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="ladeAntworten" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1gti6uq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1j8kovk</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="StartEvent_1" name="Anmelden">
+      <bpmn:outgoing>Flow_0v9pywt</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="Gateway_0kr54y3" name="Projekt ausgewählt?" default="Flow_1dbfnei">
+      <bpmn:incoming>Flow_04yx8i8</bpmn:incoming>
+      <bpmn:outgoing>Flow_080tn30</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1dbfnei</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="Activity_0lqgtac" name="Projekt anlegen">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_22m3e8u" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_080tn30</bpmn:incoming>
+      <bpmn:outgoing>Flow_0opbpz6</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_065uzic">
+      <bpmn:incoming>Flow_0zy0mnk</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="Activity_176kvzt" name="Ranking und Antworten vom gewählten Lieferanten  angucken">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_30363n8" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_099egq8</bpmn:incoming>
+      <bpmn:outgoing>Flow_15zycj8</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sendTask id="Activity_07qs932" name="Zugänge für Lieferanten verschicken">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="sendeZugaengeAnLieferant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1xr74k8</bpmn:incoming>
+      <bpmn:outgoing>Flow_0xlcdjb</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:userTask id="Activity_0ztxu93" name="Fragebogen auswählen">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_2ftgmkr" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0wkt56h</bpmn:incoming>
+      <bpmn:outgoing>Flow_0rwt7ak</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0bdf6i8" name="Kategorien gewichten">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_21tjbb3" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1b4mu23</bpmn:incoming>
+      <bpmn:outgoing>Flow_08m1i2c</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_1sasq83" name="K.O. Kriterien festlegen">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3q9o0ng" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ytrens</bpmn:incoming>
+      <bpmn:outgoing>Flow_1b4mu23</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_07d95uh" name="Projekt speichern">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="neuesProjektSpeichern" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_08m1i2c</bpmn:incoming>
+      <bpmn:outgoing>Flow_0jhtvrl</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_04ybgkf" name="Fragebögen laden">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="frageboegenLaden" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0opbpz6</bpmn:incoming>
+      <bpmn:outgoing>Flow_0wkt56h</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0tl1ro3" name="Daten zum Fragebogen laden">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="ladeDatenZumFragebogen" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0rwt7ak</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ytrens</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_0s722x8">
+      <bpmn:incoming>Flow_0jhtvrl</bpmn:incoming>
+      <bpmn:incoming>Flow_1151p7y</bpmn:incoming>
+      <bpmn:outgoing>Flow_1pdfbzc</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Activity_1kd1pek" name="Daten zum Projekt laden">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="ladeDatenZumProjekt" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1dbfnei</bpmn:incoming>
+      <bpmn:outgoing>Flow_1151p7y</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_09slwuv" name="Lieferanten laden">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="lieferantenLaden" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1pdfbzc</bpmn:incoming>
+      <bpmn:outgoing>Flow_15clqef</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_1q40nd7" name="Neuer Lieferant ausgewählt" default="Flow_0z8hapn">
+      <bpmn:incoming>Flow_1l0avzi</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ftovjp</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0z8hapn</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Activity_0ohbvu5" name="Lieferant zum Projekt hinzufügen">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="lieferantZumProjektHinzufuegen" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ftovjp</bpmn:incoming>
+      <bpmn:outgoing>Flow_1g9b4ky</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_1ai3uix" name="Lieferant auswählen">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3e4p7sg" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0bpb2up</bpmn:incoming>
+      <bpmn:outgoing>Flow_04nhs1g</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_0ixs62r" name="Lieferant überprüfen">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="lieferantUeberpruefen" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_04nhs1g</bpmn:incoming>
+      <bpmn:outgoing>Flow_1l0avzi</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_12v7haz">
+      <bpmn:incoming>Flow_17t89pb</bpmn:incoming>
+      <bpmn:incoming>Flow_1klqonf</bpmn:incoming>
+      <bpmn:outgoing>Flow_099egq8</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Activity_1n2stb6" name="Daten vom Lieferanten laden">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="ladeDatenVomLieferant" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0z8hapn</bpmn:incoming>
+      <bpmn:outgoing>Flow_1byh78v</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_0xdmeu8" name="Antwort vorhanden?">
+      <bpmn:incoming>Flow_1byh78v</bpmn:incoming>
+      <bpmn:outgoing>Flow_1klqonf</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1bydp9c</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_0dkuq2e">
+      <bpmn:incoming>Flow_15clqef</bpmn:incoming>
+      <bpmn:incoming>Flow_1bydp9c</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bpb2up</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_178kyci" default="Flow_0zy0mnk">
+      <bpmn:incoming>Flow_15zycj8</bpmn:incoming>
+      <bpmn:outgoing>Flow_0zy0mnk</bpmn:outgoing>
+      <bpmn:outgoing>Flow_016av8y</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="Activity_17mneq2" name="Kategorien gewichten">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3idc1ik" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_016av8y</bpmn:incoming>
+      <bpmn:outgoing>Flow_0eube0w</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_1b468q6" name="Projekt speichern">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="bestehendesProjektSpeichern" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0eube0w</bpmn:incoming>
+      <bpmn:outgoing>Flow_01wgron</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="Gateway_1t6jnoh">
+      <bpmn:incoming>Flow_1g9b4ky</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xr74k8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0483lep</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:intermediateCatchEvent id="Event_1byb43r" name="2 Wochen warten">
+      <bpmn:incoming>Flow_0483lep</bpmn:incoming>
+      <bpmn:outgoing>Flow_105vuxv</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_06f5u3j">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P2W</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sendTask id="Activity_0z3z710" name="E-Mail senden">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="sendeE-Mail" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1c40so9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rbt5j2</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:endEvent id="Event_033e339">
+      <bpmn:incoming>Flow_1jxw774</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gateway_0oi9s3k" name="Ist der Fragebogen vollständig?" default="Flow_1o8x3xu">
+      <bpmn:incoming>Flow_1cumpie</bpmn:incoming>
+      <bpmn:outgoing>Flow_1c40so9</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1o8x3xu</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_04zxwz9">
+      <bpmn:incoming>Flow_1rbt5j2</bpmn:incoming>
+      <bpmn:incoming>Flow_1o8x3xu</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jxw774</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Activity_04tc80y" name="Prüfung auf Vollständigkeit">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="aufVollstaendigkeitPruefen" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_105vuxv</bpmn:incoming>
+      <bpmn:outgoing>Flow_1cumpie</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0v9pywt" sourceRef="StartEvent_1" targetRef="Activity_1rugmnc" />
+    <bpmn:sequenceFlow id="Flow_04yx8i8" sourceRef="Activity_171v9fh" targetRef="Gateway_0kr54y3" />
+    <bpmn:sequenceFlow id="Flow_080tn30" name="Nein" sourceRef="Gateway_0kr54y3" targetRef="Activity_0lqgtac">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=radio_projekt_decision = "-1"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1dbfnei" sourceRef="Gateway_0kr54y3" targetRef="Activity_1kd1pek" />
+    <bpmn:sequenceFlow id="Flow_0opbpz6" sourceRef="Activity_0lqgtac" targetRef="Activity_04ybgkf" />
+    <bpmn:sequenceFlow id="Flow_0zy0mnk" sourceRef="Gateway_178kyci" targetRef="Event_065uzic" />
+    <bpmn:sequenceFlow id="Flow_099egq8" sourceRef="Gateway_12v7haz" targetRef="Activity_176kvzt" />
+    <bpmn:sequenceFlow id="Flow_15zycj8" sourceRef="Activity_176kvzt" targetRef="Gateway_178kyci" />
+    <bpmn:sequenceFlow id="Flow_1xr74k8" sourceRef="Gateway_1t6jnoh" targetRef="Activity_07qs932" />
+    <bpmn:sequenceFlow id="Flow_0wkt56h" sourceRef="Activity_04ybgkf" targetRef="Activity_0ztxu93" />
+    <bpmn:sequenceFlow id="Flow_0rwt7ak" sourceRef="Activity_0ztxu93" targetRef="Activity_0tl1ro3" />
+    <bpmn:sequenceFlow id="Flow_1b4mu23" sourceRef="Activity_1sasq83" targetRef="Activity_0bdf6i8" />
+    <bpmn:sequenceFlow id="Flow_08m1i2c" sourceRef="Activity_0bdf6i8" targetRef="Activity_07d95uh" />
+    <bpmn:sequenceFlow id="Flow_0ytrens" sourceRef="Activity_0tl1ro3" targetRef="Activity_1sasq83" />
+    <bpmn:sequenceFlow id="Flow_0mic7ib" sourceRef="Activity_1rugmnc" targetRef="Activity_171v9fh" />
+    <bpmn:sequenceFlow id="Flow_0jhtvrl" sourceRef="Activity_07d95uh" targetRef="Gateway_0s722x8" />
+    <bpmn:sequenceFlow id="Flow_1151p7y" sourceRef="Activity_1kd1pek" targetRef="Gateway_0s722x8" />
+    <bpmn:sequenceFlow id="Flow_1pdfbzc" sourceRef="Gateway_0s722x8" targetRef="Activity_09slwuv" />
+    <bpmn:sequenceFlow id="Flow_15clqef" sourceRef="Activity_09slwuv" targetRef="Gateway_0dkuq2e" />
+    <bpmn:sequenceFlow id="Flow_1l0avzi" sourceRef="Activity_0ixs62r" targetRef="Gateway_1q40nd7" />
+    <bpmn:sequenceFlow id="Flow_1ftovjp" name="Nein" sourceRef="Gateway_1q40nd7" targetRef="Activity_0ohbvu5">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=istLieferantImProjekt = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0z8hapn" sourceRef="Gateway_1q40nd7" targetRef="Activity_1n2stb6" />
+    <bpmn:sequenceFlow id="Flow_1g9b4ky" sourceRef="Activity_0ohbvu5" targetRef="Gateway_1t6jnoh" />
+    <bpmn:sequenceFlow id="Flow_0bpb2up" sourceRef="Gateway_0dkuq2e" targetRef="Activity_1ai3uix" />
+    <bpmn:sequenceFlow id="Flow_04nhs1g" sourceRef="Activity_1ai3uix" targetRef="Activity_0ixs62r" />
+    <bpmn:sequenceFlow id="Flow_1klqonf" sourceRef="Gateway_0xdmeu8" targetRef="Gateway_12v7haz">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=istVollstaendig = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1byh78v" sourceRef="Activity_1n2stb6" targetRef="Gateway_0xdmeu8" />
+    <bpmn:sequenceFlow id="Flow_1bydp9c" sourceRef="Gateway_0xdmeu8" targetRef="Gateway_0dkuq2e">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=istVollstaendig = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_016av8y" name="Ja" sourceRef="Gateway_178kyci" targetRef="Activity_17mneq2">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=radio_kategorien_gewichten = "true"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0eube0w" sourceRef="Activity_17mneq2" targetRef="Activity_1b468q6" />
+    <bpmn:sequenceFlow id="Flow_0483lep" sourceRef="Gateway_1t6jnoh" targetRef="Event_1byb43r" />
+    <bpmn:sequenceFlow id="Flow_105vuxv" sourceRef="Event_1byb43r" targetRef="Activity_04tc80y" />
+    <bpmn:sequenceFlow id="Flow_1c40so9" name="Nein" sourceRef="Gateway_0oi9s3k" targetRef="Activity_0z3z710">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=istVollstaendig = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1rbt5j2" sourceRef="Activity_0z3z710" targetRef="Gateway_04zxwz9" />
+    <bpmn:sequenceFlow id="Flow_1jxw774" sourceRef="Gateway_04zxwz9" targetRef="Event_033e339" />
+    <bpmn:sequenceFlow id="Flow_1cumpie" sourceRef="Activity_04tc80y" targetRef="Gateway_0oi9s3k" />
+    <bpmn:sequenceFlow id="Flow_1o8x3xu" sourceRef="Gateway_0oi9s3k" targetRef="Gateway_04zxwz9" />
+    <bpmn:serviceTask id="Activity_1rugmnc" name="Projekte laden">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="projekteLaden" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0v9pywt</bpmn:incoming>
+      <bpmn:outgoing>Flow_0mic7ib</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_171v9fh" name="Projekt auswählen">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_23l4pdk" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0mic7ib</bpmn:incoming>
+      <bpmn:outgoing>Flow_04yx8i8</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:textAnnotation id="TextAnnotation_16kwl95">
+      <bpmn:text>Nur ID und Beschreibung</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_1fr6f92">
+      <bpmn:text>Prüft, ob ein Lieferant schon im Projekt ist</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_11oy7u1">
+      <bpmn:text>Mit Auswahl ob Gewichte angepasst werden sollen</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_1r8psj5">
+      <bpmn:text>Nur ID und Beschreibung</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_1qyydnx">
+      <bpmn:text>z. B. -1 wenn neu angelegt werden soll</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0i4djzi" sourceRef="Gateway_0kr54y3" targetRef="TextAnnotation_1qyydnx" />
+    <bpmn:association id="Association_1jg3868" sourceRef="Activity_176kvzt" targetRef="TextAnnotation_11oy7u1" />
+    <bpmn:association id="Association_022lf4z" sourceRef="Activity_04ybgkf" targetRef="TextAnnotation_16kwl95" />
+    <bpmn:association id="Association_1gs92ij" sourceRef="Activity_0ixs62r" targetRef="TextAnnotation_1fr6f92" />
+    <bpmn:association id="Association_0iqt12v" sourceRef="Activity_1rugmnc" targetRef="TextAnnotation_1r8psj5" />
+  </bpmn:process>
+  <bpmn:message id="Message_1s92l7q" name="Message_1s92l7q" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1rwiuqm">
+      <bpmndi:BPMNShape id="Participant_1lv6edr_di" bpmnElement="Participant_1lv6edr" isHorizontal="true">
+        <dc:Bounds x="129" y="100" width="2701" height="1210" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0ue2zcq_di" bpmnElement="Lane_0ue2zcq" isHorizontal="true">
+        <dc:Bounds x="159" y="100" width="2671" height="560" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1neh1ul_di" bpmnElement="Lane_1neh1ul" isHorizontal="true">
+        <dc:Bounds x="159" y="660" width="2671" height="290" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1btot0y_di" bpmnElement="Lane_1btot0y" isHorizontal="true">
+        <dc:Bounds x="159" y="950" width="2671" height="360" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1rnae1a_di" bpmnElement="Activity_1ud1lkl">
+        <dc:Bounds x="2350" y="1130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mhs832_di" bpmnElement="Activity_0deisjr">
+        <dc:Bounds x="2200" y="1130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0udmcbn" bpmnElement="Gateway_1akozmn" isMarkerVisible="true">
+        <dc:Bounds x="1065" y="755" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1exicq0_di" bpmnElement="Gateway_1exicq0" isMarkerVisible="true">
+        <dc:Bounds x="1435" y="755" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1425" y="725" width="71" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wgejng_di" bpmnElement="Activity_0rc29g6">
+        <dc:Bounds x="1300" y="740" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0uwp56t_di" bpmnElement="Activity_1i4ks53">
+        <dc:Bounds x="1150" y="740" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_134927e_di" bpmnElement="Gateway_134927e" isMarkerVisible="true">
+        <dc:Bounds x="1525" y="755" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0ggwm2t_di" bpmnElement="Gateway_0ggwm2t" isMarkerVisible="true">
+        <dc:Bounds x="2095" y="1145" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1diq2wv_di" bpmnElement="Activity_1xsbdpr">
+        <dc:Bounds x="1770" y="1130" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0cn5bf8_di" bpmnElement="Gateway_0cn5bf8" isMarkerVisible="true">
+        <dc:Bounds x="1945" y="1145" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1940" y="1205" width="60" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0y0poi8_di" bpmnElement="Activity_11obj82">
+        <dc:Bounds x="1920" y="1000" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vfmr8c_di" bpmnElement="Activity_15lfh44">
+        <dc:Bounds x="1920" y="740" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1pmfalu_di" bpmnElement="Activity_1kylabx">
+        <dc:Bounds x="1770" y="740" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01dwn3s_di" bpmnElement="Activity_1t7l9zz">
+        <dc:Bounds x="1620" y="740" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="202" y="338" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="196" y="381" width="50" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_05fdt1j" bpmnElement="Gateway_0kr54y3" isMarkerVisible="true">
+        <dc:Bounds x="555" y="331" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="550" y="388" width="62" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1mw64a4" bpmnElement="Activity_0lqgtac">
+        <dc:Bounds x="530" y="180" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_065uzic_di" bpmnElement="Event_065uzic">
+        <dc:Bounds x="2752" y="338" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3226" y="71" width="49" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ni182g_di" bpmnElement="Activity_176kvzt">
+        <dc:Bounds x="2460" y="316" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0b83pay_di" bpmnElement="Activity_07qs932">
+        <dc:Bounds x="1040" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_12z5y4w_di" bpmnElement="Activity_0ztxu93">
+        <dc:Bounds x="820" y="180" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1nn0s5c_di" bpmnElement="Activity_0bdf6i8">
+        <dc:Bounds x="1240" y="180" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08c8d0d_di" bpmnElement="Activity_1sasq83">
+        <dc:Bounds x="1100" y="180" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hqxmud_di" bpmnElement="Activity_07d95uh">
+        <dc:Bounds x="1380" y="180" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0dgh2ic_di" bpmnElement="Activity_04ybgkf">
+        <dc:Bounds x="680" y="180" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19sswny_di" bpmnElement="Activity_0tl1ro3">
+        <dc:Bounds x="960" y="180" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0s722x8_di" bpmnElement="Gateway_0s722x8" isMarkerVisible="true">
+        <dc:Bounds x="1405" y="331" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0esfeel_di" bpmnElement="Activity_1kd1pek">
+        <dc:Bounds x="680" y="316" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ay3048_di" bpmnElement="Activity_09slwuv">
+        <dc:Bounds x="1500" y="316" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1q40nd7_di" bpmnElement="Gateway_1q40nd7" isMarkerVisible="true">
+        <dc:Bounds x="2005" y="331" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1992" y="294" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15sed7a_di" bpmnElement="Activity_0ohbvu5">
+        <dc:Bounds x="1980" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03njb3r_di" bpmnElement="Activity_1ai3uix">
+        <dc:Bounds x="1720" y="316" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vts0hn_di" bpmnElement="Activity_0ixs62r">
+        <dc:Bounds x="1850" y="316" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_12v7haz_di" bpmnElement="Gateway_12v7haz" isMarkerVisible="true">
+        <dc:Bounds x="2375" y="331" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06vla5i_di" bpmnElement="Activity_1n2stb6">
+        <dc:Bounds x="2120" y="316" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0xdmeu8_di" bpmnElement="Gateway_0xdmeu8" isMarkerVisible="true">
+        <dc:Bounds x="2265" y="331" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2262" y="388" width="58" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0dkuq2e_di" bpmnElement="Gateway_0dkuq2e" isMarkerVisible="true">
+        <dc:Bounds x="1635" y="331" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_178kyci_di" bpmnElement="Gateway_178kyci" isMarkerVisible="true">
+        <dc:Bounds x="2625" y="331" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vjh7nx_di" bpmnElement="Activity_17mneq2">
+        <dc:Bounds x="2600" y="430" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_127fcnw_di" bpmnElement="Activity_1b468q6">
+        <dc:Bounds x="2600" y="540" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0lgzf4r_di" bpmnElement="Gateway_1t6jnoh">
+        <dc:Bounds x="1205" y="465" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1byb43r_di" bpmnElement="Event_1byb43r">
+        <dc:Bounds x="1212" y="562" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1189" y="605" width="86" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ajknhl_di" bpmnElement="Activity_0z3z710">
+        <dc:Bounds x="1530" y="540" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_033e339_di" bpmnElement="Event_033e339">
+        <dc:Bounds x="1792" y="562" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0oi9s3k_di" bpmnElement="Gateway_0oi9s3k" isMarkerVisible="true">
+        <dc:Bounds x="1425" y="555" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1420" y="612" width="60" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_04zxwz9_di" bpmnElement="Gateway_04zxwz9" isMarkerVisible="true">
+        <dc:Bounds x="1675" y="555" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17onql3_di" bpmnElement="Activity_04tc80y">
+        <dc:Bounds x="1280" y="540" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0739j1u_di" bpmnElement="Activity_1rugmnc">
+        <dc:Bounds x="270" y="316" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_150w32e_di" bpmnElement="Activity_171v9fh">
+        <dc:Bounds x="410" y="316" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_16kwl95_di" bpmnElement="TextAnnotation_16kwl95">
+        <dc:Bounds x="780" y="120" width="285" height="30" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1fr6f92_di" bpmnElement="TextAnnotation_1fr6f92">
+        <dc:Bounds x="1930" y="230" width="100" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_11oy7u1_di" bpmnElement="TextAnnotation_11oy7u1">
+        <dc:Bounds x="2560" y="230" width="157.07236842105263" height="40.02965159377317" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1r8psj5_di" bpmnElement="TextAnnotation_1r8psj5">
+        <dc:Bounds x="370" y="230" width="99.99274099883856" height="40.65040650406504" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1qyydnx_di" bpmnElement="TextAnnotation_1qyydnx">
+        <dc:Bounds x="660" y="420" width="244.01132404181186" height="26.713124274099883" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0gksss0_di" bpmnElement="Flow_0gksss0">
+        <di:waypoint x="2300" y="1170" />
+        <di:waypoint x="2350" y="1170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17t89pb_di" bpmnElement="Flow_17t89pb">
+        <di:waypoint x="2400" y="1130" />
+        <di:waypoint x="2400" y="381" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1if3uhg_di" bpmnElement="Flow_1if3uhg">
+        <di:waypoint x="1970" y="1080" />
+        <di:waypoint x="1970" y="1145" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1648zwq_di" bpmnElement="Flow_1648zwq">
+        <di:waypoint x="1995" y="1170" />
+        <di:waypoint x="2095" y="1170" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2035" y="1147" width="9" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zpqzrl_di" bpmnElement="Flow_0zpqzrl">
+        <di:waypoint x="1945" y="1170" />
+        <di:waypoint x="1870" y="1170" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1891" y="1147" width="23" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_099by04_di" bpmnElement="Flow_099by04">
+        <di:waypoint x="1770" y="1170" />
+        <di:waypoint x="1550" y="1170" />
+        <di:waypoint x="1550" y="805" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vaej7m_di" bpmnElement="Flow_1vaej7m">
+        <di:waypoint x="1970" y="820" />
+        <di:waypoint x="1970" y="1000" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bdikrz_di" bpmnElement="Flow_0bdikrz">
+        <di:waypoint x="2145" y="1170" />
+        <di:waypoint x="2200" y="1170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xlcdjb_di" bpmnElement="Flow_0xlcdjb">
+        <di:waypoint x="1090" y="530" />
+        <di:waypoint x="1090" y="755" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1h8ni2z_di" bpmnElement="Flow_1h8ni2z">
+        <di:waypoint x="1460" y="805" />
+        <di:waypoint x="1460" y="870" />
+        <di:waypoint x="1090" y="870" />
+        <di:waypoint x="1090" y="805" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1264" y="852" width="23" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mzna6l_di" bpmnElement="Flow_0mzna6l">
+        <di:waypoint x="1115" y="780" />
+        <di:waypoint x="1150" y="780" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17s6a5o_di" bpmnElement="Flow_17s6a5o">
+        <di:waypoint x="1400" y="780" />
+        <di:waypoint x="1435" y="780" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06piv31_di" bpmnElement="Flow_06piv31">
+        <di:waypoint x="1485" y="780" />
+        <di:waypoint x="1525" y="780" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02qvf5g_di" bpmnElement="Flow_02qvf5g">
+        <di:waypoint x="1250" y="780" />
+        <di:waypoint x="1300" y="780" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gti6uq_di" bpmnElement="Flow_1gti6uq">
+        <di:waypoint x="1575" y="780" />
+        <di:waypoint x="1620" y="780" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1j8kovk_di" bpmnElement="Flow_1j8kovk">
+        <di:waypoint x="1720" y="780" />
+        <di:waypoint x="1770" y="780" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1suit0v_di" bpmnElement="Flow_1suit0v">
+        <di:waypoint x="1870" y="780" />
+        <di:waypoint x="1920" y="780" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01wgron_di" bpmnElement="Flow_01wgron">
+        <di:waypoint x="2650" y="620" />
+        <di:waypoint x="2650" y="1270" />
+        <di:waypoint x="2120" y="1270" />
+        <di:waypoint x="2120" y="1195" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0v9pywt_di" bpmnElement="Flow_0v9pywt">
+        <di:waypoint x="238" y="356" />
+        <di:waypoint x="270" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04yx8i8_di" bpmnElement="Flow_04yx8i8">
+        <di:waypoint x="510" y="356" />
+        <di:waypoint x="555" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_1kpa5xz" bpmnElement="Flow_080tn30">
+        <di:waypoint x="580" y="331" />
+        <di:waypoint x="580" y="260" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="584" y="293" width="23" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dbfnei_di" bpmnElement="Flow_1dbfnei">
+        <di:waypoint x="605" y="356" />
+        <di:waypoint x="680" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0opbpz6_di" bpmnElement="Flow_0opbpz6">
+        <di:waypoint x="630" y="220" />
+        <di:waypoint x="680" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zy0mnk_di" bpmnElement="Flow_0zy0mnk">
+        <di:waypoint x="2675" y="356" />
+        <di:waypoint x="2752" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_099egq8_di" bpmnElement="Flow_099egq8">
+        <di:waypoint x="2425" y="356" />
+        <di:waypoint x="2460" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15zycj8_di" bpmnElement="Flow_15zycj8">
+        <di:waypoint x="2560" y="356" />
+        <di:waypoint x="2625" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xr74k8_di" bpmnElement="Flow_1xr74k8">
+        <di:waypoint x="1205" y="490" />
+        <di:waypoint x="1140" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wkt56h_di" bpmnElement="Flow_0wkt56h">
+        <di:waypoint x="780" y="220" />
+        <di:waypoint x="820" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0rwt7ak_di" bpmnElement="Flow_0rwt7ak">
+        <di:waypoint x="920" y="220" />
+        <di:waypoint x="960" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1b4mu23_di" bpmnElement="Flow_1b4mu23">
+        <di:waypoint x="1200" y="220" />
+        <di:waypoint x="1240" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08m1i2c_di" bpmnElement="Flow_08m1i2c">
+        <di:waypoint x="1340" y="220" />
+        <di:waypoint x="1380" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ytrens_di" bpmnElement="Flow_0ytrens">
+        <di:waypoint x="1060" y="220" />
+        <di:waypoint x="1100" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mic7ib_di" bpmnElement="Flow_0mic7ib">
+        <di:waypoint x="370" y="356" />
+        <di:waypoint x="410" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jhtvrl_di" bpmnElement="Flow_0jhtvrl">
+        <di:waypoint x="1430" y="260" />
+        <di:waypoint x="1430" y="331" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1151p7y_di" bpmnElement="Flow_1151p7y">
+        <di:waypoint x="780" y="356" />
+        <di:waypoint x="1405" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pdfbzc_di" bpmnElement="Flow_1pdfbzc">
+        <di:waypoint x="1455" y="356" />
+        <di:waypoint x="1500" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15clqef_di" bpmnElement="Flow_15clqef">
+        <di:waypoint x="1600" y="356" />
+        <di:waypoint x="1635" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1l0avzi_di" bpmnElement="Flow_1l0avzi">
+        <di:waypoint x="1950" y="356" />
+        <di:waypoint x="2005" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ftovjp_di" bpmnElement="Flow_1ftovjp">
+        <di:waypoint x="2030" y="381" />
+        <di:waypoint x="2030" y="450" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2048" y="411" width="23" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0z8hapn_di" bpmnElement="Flow_0z8hapn">
+        <di:waypoint x="2055" y="356" />
+        <di:waypoint x="2120" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1g9b4ky_di" bpmnElement="Flow_1g9b4ky">
+        <di:waypoint x="1980" y="490" />
+        <di:waypoint x="1255" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bpb2up_di" bpmnElement="Flow_0bpb2up">
+        <di:waypoint x="1685" y="356" />
+        <di:waypoint x="1720" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04nhs1g_di" bpmnElement="Flow_04nhs1g">
+        <di:waypoint x="1820" y="356" />
+        <di:waypoint x="1850" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1klqonf_di" bpmnElement="Flow_1klqonf">
+        <di:waypoint x="2315" y="356" />
+        <di:waypoint x="2375" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1byh78v_di" bpmnElement="Flow_1byh78v">
+        <di:waypoint x="2220" y="356" />
+        <di:waypoint x="2265" y="356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bydp9c_di" bpmnElement="Flow_1bydp9c">
+        <di:waypoint x="2290" y="331" />
+        <di:waypoint x="2290" y="190" />
+        <di:waypoint x="1660" y="190" />
+        <di:waypoint x="1660" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_016av8y_di" bpmnElement="Flow_016av8y">
+        <di:waypoint x="2650" y="381" />
+        <di:waypoint x="2650" y="430" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2660" y="403" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0eube0w_di" bpmnElement="Flow_0eube0w">
+        <di:waypoint x="2650" y="510" />
+        <di:waypoint x="2650" y="540" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0483lep_di" bpmnElement="Flow_0483lep">
+        <di:waypoint x="1230" y="515" />
+        <di:waypoint x="1230" y="562" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_105vuxv_di" bpmnElement="Flow_105vuxv">
+        <di:waypoint x="1248" y="580" />
+        <di:waypoint x="1280" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1c40so9_di" bpmnElement="Flow_1c40so9">
+        <di:waypoint x="1475" y="580" />
+        <di:waypoint x="1530" y="580" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1491" y="562" width="23" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rbt5j2_di" bpmnElement="Flow_1rbt5j2">
+        <di:waypoint x="1630" y="580" />
+        <di:waypoint x="1675" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jxw774_di" bpmnElement="Flow_1jxw774">
+        <di:waypoint x="1725" y="580" />
+        <di:waypoint x="1792" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1cumpie_di" bpmnElement="Flow_1cumpie">
+        <di:waypoint x="1380" y="580" />
+        <di:waypoint x="1425" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1o8x3xu_di" bpmnElement="Flow_1o8x3xu">
+        <di:waypoint x="1450" y="555" />
+        <di:waypoint x="1450" y="510" />
+        <di:waypoint x="1700" y="510" />
+        <di:waypoint x="1700" y="555" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0i4djzi_di" bpmnElement="Association_0i4djzi">
+        <di:waypoint x="593" y="368" />
+        <di:waypoint x="660" y="433" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1jg3868_di" bpmnElement="Association_1jg3868">
+        <di:waypoint x="2546" y="316" />
+        <di:waypoint x="2587" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_022lf4z_di" bpmnElement="Association_022lf4z">
+        <di:waypoint x="754" y="180" />
+        <di:waypoint x="780" y="135" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1gs92ij_di" bpmnElement="Association_1gs92ij">
+        <di:waypoint x="1929" y="316" />
+        <di:waypoint x="1951" y="285" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0iqt12v_di" bpmnElement="Association_0iqt12v">
+        <di:waypoint x="356" y="316" />
+        <di:waypoint x="397" y="271" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
